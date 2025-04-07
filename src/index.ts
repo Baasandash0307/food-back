@@ -7,7 +7,6 @@ const app = express();
 const port = 8000;
 app.use(express.json());
 
-// sad
 app.use("/api/v1/foods", foodRouter);
 app.use("/api/v1/categories", categoryRouter);
 
