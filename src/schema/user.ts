@@ -1,24 +1,25 @@
 import mongoose from "mongoose";
+import { unique } from "next/dist/build/utils";
 
-const user = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
     {
         email: {
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         password: {
             type: String,
             required: true
         },
-        phoneNumber: {
+        role: {
             type: String,
-            required: true
+            enum: ["ADMIN", "USER"]
         },
-        address: {
-            type: String,
-            required: true
-        }
+    },
+    {
+        timestamps: true
     }
 )
 
-export const Food = mongoose.model("user", user);
+export const User = mongoose.model("user", UserSchema);
